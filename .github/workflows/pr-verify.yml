@@ -1,0 +1,17 @@
+name: PR Verify
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: dotnet test
+      working-directory: src/GitHubActionsDotNet.Api.Tests
+      run: dotnet test

@@ -12,6 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: setup dotnet
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.100'
+
     - name: dotnet test
       working-directory: src/GitHubActionsDotNet.Api.Tests
       run: dotnet test

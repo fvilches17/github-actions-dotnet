@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+env:
+  testProjectDirectory: src/GitHubActionsDotNet.Api.Tests
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -17,6 +20,10 @@ jobs:
       with:
         global-json-file: global.json
 
+    - name: dotnet format
+      working-directory: ${{ env.testProjectDirectory }}
+      run: dotnet format --verbosity detailed --verify-no-changes
+    
     - name: dotnet test
-      working-directory: src/GitHubActionsDotNet.Api.Tests
-      run: dotnet test
+      working-directory: ${{ env.testProjectDirectory }}
+      run: dotnet test --configuration Release

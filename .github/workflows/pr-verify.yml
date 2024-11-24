@@ -26,4 +26,4 @@ jobs:
     
     - name: dotnet test
       working-directory: ${{ env.testProjectDirectory }}
-      run: dotnet test --configuration Release --no-build
+      run: dotnet test --configuration Release
